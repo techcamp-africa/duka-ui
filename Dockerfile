@@ -9,8 +9,8 @@ COPY ./package*.json /app/
 
 # install app dependencies
 
-RUN npm install --silent
-RUN npm install react-scripts -g --silent
+RUN npm install
+RUN npm install react-scripts -g
 
 # add app / copy
 COPY . .
