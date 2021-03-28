@@ -36,10 +36,10 @@ function MakeSale(props) {
 
     const classes = useStyles();
 
-    const [sales, setSales] = React.useState()
+    const [sales, setSales] = React.useState([])
     const [sale, setSale] = React.useState({
         quantity: 0,
-        inv_id: props.match.params.id
+        invId: props.match.params.id
     })
 
     useEffect(() => {
@@ -53,6 +53,9 @@ function MakeSale(props) {
         })
     }, [])
 
+
+    console.log("sales", sales)
+
     const handleChange = e => {
         setSale({...sale, [e.target.name]: e.target.value})
     }
@@ -61,6 +64,7 @@ function MakeSale(props) {
         axios.post(`http://138.68.189.32:8080/sales`, sale)
         .then(res => {
             console.log(res.data)
+            setSales([...sales, res.data])
         })
         .catch(err => {
             console.log(err)
@@ -69,11 +73,13 @@ function MakeSale(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
+        // console.log("sale made", sale)
+        const newSale = [...sales, sale]
+        console.log("s", newSale)
         makeSale(sale)
-        console.log("sale made", sale)
         setSale({
             quantity: 0,
-            inv_id: props.match.params.id
+            invId: props.match.params.id
         })
     }
 
@@ -95,8 +101,8 @@ function MakeSale(props) {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            name="inv_id"
-                            value={sale.inv_id}
+                            name="invId"
+                            value={sale.invId}
                             onChange={handleChange}
                         />
                         </div>
@@ -126,15 +132,15 @@ function MakeSale(props) {
                             <TableCell style={{fontWeight: '700'}} align="center">Created_at</TableCell>
                         </TableRow>
                         </TableHead>
-                        <TableBody>
-                        {sales && sales.map((row) => (
-                            <TableRow key={row.quantity}>
-                            <TableCell component="th" scope="row">
-                                {row.quantity}
-                            </TableCell>
-                            <TableCell align="center">{row.created_at}</TableCell>
-                            </TableRow>
-                        ))}
+                        <TableBody style={{overflowY: 'scroll', maxHeight: '200px'}}>
+                            {sales && sales.map((row, index) => (
+                                <TableRow key={index}>
+                                <TableCell component="th" scope="row">
+                                    {row.quantity}
+                                </TableCell>
+                                <TableCell align="center">{row.createdAt}</TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                     </TableContainer>
@@ -171,5 +177,12 @@ export const TableWrapper = styled.div`
 `
 export const Tables = styled.div`
     width: 60%;
+    max-height: 450px;
+    overflow-y: scroll;
     border: 2px solid #111;
+
+    > h4 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 ` 

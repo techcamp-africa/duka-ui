@@ -101,6 +101,7 @@ function Inventories() {
       axios.post(`http://138.68.189.32:8000/inventories`, inventory)
       .then(res => {
         console.log("hehr",res.data)
+        setInventories([...inventories, res.data])
       })
       .catch(err => {
         console.log(err)

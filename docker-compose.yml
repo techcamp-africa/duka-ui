@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  duka_ui:
+    container_name: duka_ui
+    restart: unless-stopped
+    build: ./duka_ui
+    environment: 
+      - NODE_PATH=/app/src
+    ports:
+      - '3000:80'
+    
