@@ -6,9 +6,9 @@ function Navbar() {
     return (
         <Container>
             <div></div>
-            <div style={{display: 'flex', alignItems: 'center', marginRight: '.6rem', color: '#fff'}}>
+            <div style={{display: 'flex', alignItems: 'center', color: '#fff'}}>
                 <FiUser style={{fontSize: '20px', marginRight: '.5rem'}}/>
-                <span style={{fontSize: '1rem', marginTop: '.2rem', fontWeight: 'bolder'}}>John Doe</span>
+                <span style={{fontSize: '1rem', marginTop: '.2rem', paddingRight: '2rem', fontWeight: 'bolder'}}>John Doe</span>
             </div>
         </Container>
     )

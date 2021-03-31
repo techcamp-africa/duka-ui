@@ -5,7 +5,7 @@ import {AiFillDatabase, FcSalesPerformance, AiOutlineStock} from 'react-icons/al
 function Sidebar() {
     return (
         <Container>
-            <Logo>
+            <Logo to="/">
                 Duka
             </Logo>
             <List>

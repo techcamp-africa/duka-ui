@@ -6,10 +6,21 @@ export const Container = styled.div`
     width: 240px;
     height: 100vh;
     background: #00171f;
+    padding-top: .6rem;
+    position: relative;
+
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
 `
-export const Logo = styled.h2`
+export const Logo = styled(Link)`
     color: #fff;
-    padding: .8rem 4rem;
+    padding: 0 4rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
 `
 
 export const List = styled.ul`
