@@ -122,18 +122,14 @@ function Inventories() {
     }
 
     return (
-        <Container>
-            <div>
-                <Sidebar/>
-            </div>
-            <Main>
-                <Navbar />
-
+        <>
+          <Sidebar/>
+          <Main>
               {/* Dialog button for add inventory */}
-                <DialogWrapper>
-                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+              <DialogWrapper>
+                <AddButton variant="outlined" color="primary" onClick={handleClickOpen}>
                   Add Inventory
-                </Button>
+                </AddButton>
                 <Dialog
                   open={open}
                   TransitionComponent={Transition}
@@ -145,7 +141,7 @@ function Inventories() {
                   <DialogTitle id="alert-dialog-slide-title">{"Add New Inventory"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                      <div style={{marginBottom: '1rem', width: '300px'}}>
+                      <div style={{marginBottom: '1rem'}}>
                         <TextField
                         id="filled-error"
                         label="Title"
@@ -257,15 +253,24 @@ function Inventories() {
                     </TableContainer>
                 </TableWrapper>
                 {/* table end */}
-            </Main>
-        </Container>
+          </Main>
+          
+        </>
     )
 }
 
 export default Inventories
 
 export const Main = styled.div`
-  flex: 7.0;
+  padding: 25px 0px 0px 270px;
+
+  @media screen and (max-width: 480px){
+    padding: 0px
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `
 export const Container = styled.div`
   display: flex;
@@ -279,4 +284,13 @@ export const TableWrapper = styled.div`
 export const DialogWrapper = styled.div`
   text-align: center;
   padding-top: 1rem;
+`
+
+export const AddButton = styled.button`
+  padding: .5rem 1rem;
+  outline: none;
+  border-radius: 4px;
+  color: blue;
+  border: 1px solid blue;
+  text-transform: uppercase;
 `

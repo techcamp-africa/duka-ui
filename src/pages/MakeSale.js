@@ -84,42 +84,37 @@ function MakeSale(props) {
     }
 
     return (
-        <Container>
-            <div>
-                <Sidebar/>
-            </div>
+        <>
+            <Sidebar/>
             <Main>
-                <Navbar/>
                 <TableWrapper>
                     <div>
                         <h2 style={{marginBottom: '30px'}}>Make sale to Inventory</h2>
-                        <div style={{marginBottom: '1rem', width: '300px'}}>
+                        <Wrapper>
                             <TextField
                             id="filled-error"
                             label="Inventory_id"
                             placeholder="Enter inventory title"
                             variant="outlined"
-                            fullWidth
                             size="small"
                             name="invId"
                             value={sale.invId}
                             onChange={handleChange}
                         />
-                        </div>
-                        <div style={{marginBottom: '1rem', width: '300px'}}>
+                        </Wrapper>
+                        <Wrapper style={{marginBottom: '1rem', width: '300px'}}>
                             <TextField
                             id="filled-error"
                             label="Quantity"
                             placeholder="Enter quantity"
                             variant="outlined"
-                            fullWidth
                             size="small"
                             name="quantity"
                             value={sale.quantity}
                             onChange={handleChange}
                         />
-                        </div>
-                        <Button variant="outlined" color="primary" size="small" onClick={handleSubmit}>Make Sale</Button>
+                        </Wrapper>
+                        <AddButton onClick={handleSubmit}>Make Sale</AddButton>
                     </div>
                     <Tables>
                         <h4>Viewing all sales made to (inventory name)</h4>
@@ -148,16 +143,24 @@ function MakeSale(props) {
                     </Tables>
                 </TableWrapper>
             </Main>
-        </Container>
+        </>
     )
 }
 
 export default MakeSale
 
-
 export const Main = styled.div`
-  flex: 7.0;
+  padding: 25px 0px 0px 270px;
+
+  @media screen and (max-width: 480px){
+    padding: 0px
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -174,6 +177,14 @@ export const TableWrapper = styled.div`
         margin: 2rem auto;
     }
 
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+
+        > div {
+            width: 100%;
+        }
+    }
+
 `
 export const Tables = styled.div`
     width: 60%;
@@ -186,3 +197,15 @@ export const Tables = styled.div`
         margin-bottom: 20px;
     }
 ` 
+export const Wrapper = styled.div`
+    margin-bottom: 1rem;
+    width: 300px;
+`
+export const AddButton = styled.button`
+  padding: .5rem 1rem;
+  outline: none;
+  border-radius: 4px;
+  color: blue;
+  border: 1px solid blue;
+  text-transform: uppercase;
+`

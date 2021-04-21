@@ -36,15 +36,11 @@ function Stock() {
     const classes = useStyles();
 
     return (
-        <Container>
-            <div>
-                <Sidebar/>
-            </div>
-            <Main>
-                <Navbar />
-                
-                 {/* table jsx */}
-                 <TableWrapper>
+        <>
+          <Sidebar/>
+          <Main>
+              {/* table jsx */}
+              <TableWrapper>
                     <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
@@ -67,17 +63,26 @@ function Stock() {
                     </TableContainer>
                 </TableWrapper>
                 {/* table end */}
-
-            </Main>
-        </Container>
+          </Main>
+          
+        </>
     )
 }
 
 export default Stock
 
 export const Main = styled.div`
-  flex: 7.0;
+  padding: 25px 0px 0px 270px;
+
+  @media screen and (max-width: 480px) {
+    padding: 0px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;

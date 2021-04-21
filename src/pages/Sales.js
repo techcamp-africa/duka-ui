@@ -35,48 +35,53 @@ function Sales() {
     const classes = useStyles();
 
     return (
-        <Container>
-            <div>
-                <Sidebar/>
-            </div>
-            <Main>
-                <Navbar />
-                
-                 {/* table jsx */}
-                 <TableWrapper>
-                    <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                        <TableRow>
-                            <TableCell style={{fontWeight: '700'}}>Quantity</TableCell>
-                            <TableCell style={{fontWeight: '700'}} align="center">Created_at</TableCell>
+        <>
+          <Sidebar/>  
+          <Main>
+              {/* table jsx */}
+              <TableWrapper>
+                <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell style={{fontWeight: '700'}}>Quantity</TableCell>
+                        <TableCell style={{fontWeight: '700'}} align="center">Created_at</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {rows.map((row) => (
+                        <TableRow key={row.quantity}>
+                        <TableCell component="th" scope="row">
+                            {row.quantity}
+                        </TableCell>
+                        <TableCell align="center">{row.created_at}</TableCell>
                         </TableRow>
-                        </TableHead>
-                        <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.quantity}>
-                            <TableCell component="th" scope="row">
-                                {row.quantity}
-                            </TableCell>
-                            <TableCell align="center">{row.created_at}</TableCell>
-                            </TableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
-                    </TableContainer>
-                </TableWrapper>
-                {/* table end */}
-
-            </Main>
-        </Container>
+                    ))}
+                    </TableBody>
+                </Table>
+                </TableContainer>
+            </TableWrapper>
+            {/* table end */}
+          </Main>    
+          
+        </>
     )
 }
 
 export default Sales
 
 export const Main = styled.div`
-  flex: 7.0;
+  padding: 25px 0px 0px 270px;
+
+  @media screen and (max-width: 480px) {
+    padding: 0px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;

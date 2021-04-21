@@ -2,20 +2,17 @@ import React from 'react'
 import Sidebar from '../components/sidebar'
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
-import {AiFillDatabase, FcSalesPerformance} from 'react-icons/all'
+import {AiFillDatabase, FcSalesPerformance, FaUsers} from 'react-icons/all'
 import LineChart from '../components/charts/LineChart'
 import BarChart from '../components/charts/BarChart'
 
 
 function Dashboard() {
     return (
-    <Container>
-      <div>
-        <Sidebar/>
-      </div>
-      <Main>
-        <Navbar />
-          <CardWrapper>
+      <>
+        <Sidebar />
+        <Main>
+        <CardWrapper>
               <Card>
                 <h3>Inventories</h3>
                 <div>
@@ -26,10 +23,10 @@ function Dashboard() {
                 </div>
               </Card>
               <Card>
-                <h3>Inventories</h3>
+                <h3>Vendors</h3>
                 <div>
                   <Icon>
-                    <AiFillDatabase />
+                    <FaUsers />
                   </Icon>
                   <p>15</p>
                 </div>
@@ -46,15 +43,14 @@ function Dashboard() {
           </CardWrapper>
           <ChartWrapper>
             <div>
-              <LineChart />
-            </div>
-            <div>
               <BarChart />
             </div>
+            <div>
+              <LineChart />
+            </div>
           </ChartWrapper>
-
-      </Main>
-    </Container>
+        </Main>
+      </>
     )
 }
 
@@ -62,7 +58,16 @@ function Dashboard() {
 export default Dashboard;
 
 export const Main = styled.div`
-  flex: 7.0;
+  /* flex: 7.0; */
+  padding: 25px 0px 0px 270px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0px;
+  }
 `
 export const Container = styled.div`
   display: flex;
@@ -74,6 +79,10 @@ export const CardWrapper = styled.div`
   margin-top: 1rem;
   padding: 1rem 0;
 
+
+  @media screen and (max-width: 480px) {
+    gap: 10px;
+  }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -103,6 +112,10 @@ export const Card = styled.div`
     font-size: 2rem;
   }
 
+  @media screen and (max-width: 480px) {
+    margin: 0 auto;
+  }
+
   @media screen and (max-width: 768px) {
     margin: 0 auto;
   }
@@ -118,12 +131,31 @@ export const ChartWrapper = styled.div`
   margin-top: .96rem;
   padding: 1rem 0rem;
 
+  > div {
+    width: 40%;
+    /* max-height: 500px; */
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    > div {
+      width: 100%;
+      /* border: 1px solid #111; */
+    }
+  }
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 
     > div {
-      width: 100px;
+      width: 100%;
+      /* border: 1px solid #111; */
     }
   }
 `
