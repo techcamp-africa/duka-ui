@@ -1,13 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/sidebar'
 import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import {AiFillDatabase, FcSalesPerformance, FaUsers} from 'react-icons/all'
 import LineChart from '../components/charts/LineChart'
 import BarChart from '../components/charts/BarChart'
+import axios from 'axios'
 
 
 function Dashboard() {
+
+     const [inventories, setInventories] = useState(0)
+     const [sales, setSales] = useState(0)
+
+     // use effect for fetching all inventories an all sales 
+
+    // function that fetches all sales
+    const fetchSales = () => {
+      axios.get('http://138.68.189.32:8080/sales')
+        .then(res => {
+            console.log("fetched sales", res.data)
+            setSales(res.data.length)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    // function that fetches all inentories
+    const fetchInventories = () => {
+      axios.get(`http://138.68.189.32:8000/inventories`)
+      .then(res => {
+        console.log(res.data)
+        setInventories(res.data.length)
+        console.log("inventories", inventories)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+
+    useEffect(() => {
+      fetchInventories()
+      fetchSales()
+    }, [])
+
     return (
       <>
         <Sidebar />
@@ -19,16 +57,16 @@ function Dashboard() {
                   <Icon>
                     <AiFillDatabase />
                   </Icon>
-                  <p>20</p>
+                  <p>{inventories}</p>
                 </div>
               </Card>
               <Card>
-                <h3>Vendors</h3>
+                <h3>Stock</h3>
                 <div>
                   <Icon>
                     <FaUsers />
                   </Icon>
-                  <p>15</p>
+                  <p>0</p>
                 </div>
               </Card>
               <Card>
@@ -37,7 +75,7 @@ function Dashboard() {
                   <Icon>
                     <FcSalesPerformance />
                   </Icon>
-                  <p>10</p>
+                  <p>{sales}</p>
                 </div>
               </Card>
           </CardWrapper>

@@ -71,7 +71,8 @@ function AddStock(props) {
         <>
             <Sidebar/>
             <Main>
-                <TableWrapper>
+                <h2>Add stock page</h2>
+                {/* <TableWrapper>
                 <div>
                         <h2 style={{marginBottom: '20px'}}>Add stock to Inventory</h2>
                         <div style={{marginBottom: '1rem', width: '300px'}}>
@@ -102,7 +103,6 @@ function AddStock(props) {
                     </div>
                     <Tables>
                         <h4>Viewing all stocks added to (inventory name)</h4>
-                            {/* table jsx */}
                         <TableContainer component={Paper}>
                         <Table className={classes.table} aria-label="simple table">
                             <TableHead>
@@ -123,9 +123,8 @@ function AddStock(props) {
                             </TableBody>
                         </Table>
                         </TableContainer>
-                    {/* table end */}
                     </Tables>
-                </TableWrapper>
+                </TableWrapper> */}
             </Main>
         </>
     )

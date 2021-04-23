@@ -222,7 +222,8 @@ function Inventories() {
                         </TableRow>
                         </TableHead>
                         <TableBody>
-                        {inventories && inventories.map((row) => (
+                        {inventories && inventories.map(
+                          (row) => (
                             <TableRow key={row.title}>
                             <TableCell component="th" scope="row">
                                 {row.title}
@@ -247,7 +248,8 @@ function Inventories() {
                               </Link>
                             </TableCell>
                             </TableRow>
-                        ))}
+                        )
+                        )}
                         </TableBody>
                     </Table>
                     </TableContainer>

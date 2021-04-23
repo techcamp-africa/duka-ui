@@ -39,8 +39,9 @@ function Stock() {
         <>
           <Sidebar/>
           <Main>
+              <h3>Stock Page</h3>
               {/* table jsx */}
-              <TableWrapper>
+              {/* <TableWrapper>
                     <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="simple table">
                         <TableHead>
@@ -61,10 +62,9 @@ function Stock() {
                         </TableBody>
                     </Table>
                     </TableContainer>
-                </TableWrapper>
+                </TableWrapper> */}
                 {/* table end */}
           </Main>
-          
         </>
     )
 }
