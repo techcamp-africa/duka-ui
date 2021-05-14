@@ -1,0 +1,1 @@
+export const setAuthorization = token => localStorage.setItem("duka-token", token);

@@ -6,6 +6,7 @@ import {AiFillDatabase, FcSalesPerformance, FaUsers} from 'react-icons/all'
 import LineChart from '../components/charts/LineChart'
 import BarChart from '../components/charts/BarChart'
 import axios from 'axios'
+import BASE_URL from '../components/api'
 
 
 function Dashboard() {
@@ -17,7 +18,7 @@ function Dashboard() {
 
     // function that fetches all sales
     const fetchSales = () => {
-      axios.get('http://138.68.189.32:8080/sales')
+      BASE_URL.get('/sales')
         .then(res => {
             console.log("fetched sales", res.data)
             setSales(res.data.length)
@@ -29,7 +30,7 @@ function Dashboard() {
 
     // function that fetches all inentories
     const fetchInventories = () => {
-      axios.get(`http://138.68.189.32:8000/inventories`)
+      BASE_URL.get(`/inventories`)
       .then(res => {
         console.log(res.data)
         setInventories(res.data.length)

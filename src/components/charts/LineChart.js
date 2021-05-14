@@ -1,6 +1,6 @@
 import {Line} from 'react-chartjs-2'
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import BASE_URL from '../api'
 
 
 const LineChart = () => {
@@ -10,7 +10,7 @@ const LineChart = () => {
 
   // function that fetches all sales
   const fetchSales = () => {
-    axios.get('http://138.68.189.32:8080/sales')
+    BASE_URL.get('/sales')
       .then(res => {
           console.log(" graph fetched sales", res.data)
           setSales(res.data)
@@ -22,7 +22,7 @@ const LineChart = () => {
 
   // function that fetches all inentories
   const fetchInventories = () => {
-    axios.get(`http://138.68.189.32:8000/inventories`)
+    BASE_URL.get(`/inventories`)
     .then(res => {
       console.log(res.data)
       setInventories(res.data)

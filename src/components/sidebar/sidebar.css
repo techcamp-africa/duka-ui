@@ -2,7 +2,7 @@
     background: #060b26;
     height: 80px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -65,7 +65,7 @@
     width: 50%;
     height: 80px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 

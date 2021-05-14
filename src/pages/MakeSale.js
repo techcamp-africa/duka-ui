@@ -14,23 +14,13 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from 'axios'
+import BASE_URL from '../components/api'
 
 const useStyles = makeStyles({
     table: {
       minWidth: 650,
     },
   });
-  
-  function createData(quantity, created_at) {
-    return {quantity, created_at};
-  }
-  
-  const rows = [
-    createData(159, "2020-07-10"),
-    createData(159, "2020-07-10"),
-    createData(159, "2020-07-10"),
-    createData(159, "2020-07-10"),
-  ];
 
 function MakeSale(props) {
 
@@ -43,7 +33,7 @@ function MakeSale(props) {
     })
 
     useEffect(() => {
-        axios.get('http://138.68.189.32:8080/sales')
+        BASE_URL.get('/sales')
         .then(res => {
             console.log("fetched sales", res.data)
             setSales(res.data)

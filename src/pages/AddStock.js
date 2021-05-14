@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from '../components/sidebar'
-import Navbar from '../components/Navbar'
 import styled from 'styled-components'
 import { Button, TextField } from '@material-ui/core'
 

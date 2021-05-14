@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import Sidebar from '../components/sidebar'
-import Navbar from '../components/Navbar'
 import styled from 'styled-components'
-import axios from 'axios'
+import BASE_URL from '../components/api'
 
 
 // table imports from material ui
@@ -43,18 +42,6 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(title, isbn_no, buying_price, selling_price) {
-  return { title, isbn_no, buying_price, selling_price};
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24),
-  createData('Ice cream sandwich', 237, 9.0, 37),
-  createData('Eclair', 262, 16.0, 24),
-  createData('Cupcake', 305, 3.7, 67),
-  createData('Gingerbread', 356, 16.0, 49),
-];
-
 function Inventories() {
 
     const classes = useStyles();
@@ -70,7 +57,7 @@ function Inventories() {
     
     // use effect for fetching all inventories
     useEffect(() => {
-      axios.get(`http://138.68.189.32:8000/inventories`)
+      BASE_URL.get(`/inventories`)
       .then(res => {
         console.log(res.data)
         setInventories(res.data)
@@ -98,7 +85,7 @@ function Inventories() {
     }
 
     const submitInventory = (inventory) => {
-      axios.post(`http://138.68.189.32:8000/inventories`, inventory)
+      BASE_URL.post(`/inventories`, inventory)
       .then(res => {
         console.log("hehr",res.data)
         setInventories([...inventories, res.data])
@@ -224,7 +211,7 @@ function Inventories() {
                         <TableBody>
                         {inventories && inventories.map(
                           (row) => (
-                            <TableRow key={row.title}>
+                            <TableRow key={row.id}>
                             <TableCell component="th" scope="row">
                                 {row.title}
                             </TableCell>
