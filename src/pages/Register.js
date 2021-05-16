@@ -20,7 +20,7 @@ const Register = ({history}) => {
   };
 
   // create user function
-  const registerUser = async (userObj) => {
+  const registerUser = (userObj) => {
     let token, userId;
     auth
       .createUserWithEmailAndPassword(userObj.email, userObj.password)
@@ -78,7 +78,7 @@ const Register = ({history}) => {
     <Container>
       <Section>
         <CardWrapper>
-          <h4 style={{ fontFamily: 'Abril Fatface' }}>DUKA.</h4>
+          <h4 style={{ fontFamily: 'Abril Fatface', fontSize: '1.2rem' }}>DUKA.</h4>
           <h3>Sign Up</h3>
           <p>Please fill in the form below</p>
 
