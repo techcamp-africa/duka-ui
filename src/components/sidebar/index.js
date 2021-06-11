@@ -18,6 +18,7 @@ function Sidebar() {
             <div className="navbar">
                 <GiHamburgerMenu className="menu-bars" onClick={showSidebar} />
                 <Link to="/" className={sidebar ? 'max-logo' : 'logo'}>DUKA</Link>
+
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className="nav-menu-items">
@@ -37,6 +38,23 @@ function Sidebar() {
                             </Link>
                         </li>
                     ))}
+
+                    {/* premium buttons */}
+                    <li className="button-list">
+                        <Link className="analytics">
+                            Get Analytics
+                        </Link>
+                    </li>
+                    <li className="button-list">
+                        <Link className="insurance">
+                            Get Insurance
+                        </Link>
+                    </li>
+                    <li className="button-list">
+                        <Link className="payment">
+                            Intergrate Payment
+                        </Link>
+                    </li>
                 </ul>
 
             </nav>

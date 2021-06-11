@@ -15,6 +15,8 @@ const Register = ({history}) => {
     dukaName: '',
   });
 
+  const [errors, setErrors] = useState(null)
+
   const handleChange = (e) => {
     setRegister({ ...register, [e.target.name]: e.target.value });
   };
@@ -45,33 +47,54 @@ const Register = ({history}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // generate random four digit code,
-    // Will be saved as the users password
-    // Convert the generated random number to a string
-    const pass = Math.random().toString();
+    let errorz = {}
 
-    // Slice the string to only remain with four digits
-    const newPass = pass.split('.')[1].slice(0, 6);
+    if (!register.name) {
+       errorz.name = "name is required"
+    } 
 
-    // add the password to the registrant object
-    let registrant = {
-      ...register,
-      password: newPass,
-    };
+    if (!register.email) {
+      errorz.email = "email is required"
+    }
 
-    // call function to register user
-    registerUser(registrant);
+    if (!register.phoneNumber) {
+      errorz.phoneNumber = "phone number is required"
+    }
 
-    // reset the registrant state
-    setRegister({
-      name: '',
-      email: '',
-      phoneNumber: '',
-      dukaName: '',
-    });
+    if (!register.dukaName) {
+      errorz.dukaName = "duka name is required"
+    } else {
+      // generate random four digit code,
+      // Will be saved as the users password
+      // Convert the generated random number to a string
+      const pass = Math.random().toString();
 
-    // redirect to dahsboard
-    history.push('/')
+      // Slice the string to only remain with four digits
+      const newPass = pass.split('.')[1].slice(0, 6);
+
+      // add the password to the registrant object
+      let registrant = {
+        ...register,
+        password: newPass,
+      };
+
+      // call function to register user
+      registerUser(registrant);
+
+      // reset the registrant state
+      setRegister({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        dukaName: '',
+      });
+
+      // redirect to dahsboard
+      history.push('/')
+    }
+
+    console.log(errorz)
+    setErrors(errorz)
   };
 
   return (
@@ -90,7 +113,9 @@ const Register = ({history}) => {
               value={register.name}
               onChange={handleChange}
               autoComplete='off'
+              required
             />
+            {errors && <p style={{color: 'red', position: 'relative', left: '-128px', top: '6px', fontSize: '.8rem', fontWeight: '350'}}>{errors.name}</p>}
           </FormGroup>
           <FormGroup>
             <Input
@@ -99,7 +124,9 @@ const Register = ({history}) => {
               value={register.email}
               onChange={handleChange}
               autoComplete='off'
+              required
             />
+            {errors && <p style={{color: 'red', position: 'relative', left: '-128px', top: '6px', fontSize: '.8rem', fontWeight: '350'}}>{errors.email}</p>}
           </FormGroup>
           <FormGroup>
             <Input
@@ -108,7 +135,9 @@ const Register = ({history}) => {
               value={register.phoneNumber}
               onChange={handleChange}
               autoComplete='off'
+              required
             />
+            {errors && <p style={{color: 'red', position: 'relative', left: '-105px', top: '6px', fontSize: '.8rem', fontWeight: '350'}}>{errors.phoneNumber}</p>}
           </FormGroup>
           <FormGroup>
             <Input
@@ -117,7 +146,9 @@ const Register = ({history}) => {
               value={register.dukaName}
               onChange={handleChange}
               autoComplete='off'
+              required
             />
+            {errors && <p style={{color: 'red', position: 'relative', left: '-112px', top: '6px', fontSize: '.8rem', fontWeight: '350'}}>{errors.dukaName}</p>}
           </FormGroup>
           <FormGroup>
             <Submit type='submit' onClick={handleSubmit} />
@@ -125,8 +156,8 @@ const Register = ({history}) => {
         </CardWrapper>
         <Background>
           <h3>
-            Let's help you track your <br /> retail{' '}
-            <em style={{ color: '#a1ef7a' }}>business</em>
+            Keep track of your retail{' '}
+            <em style={{ color: '#a1ef7a' }}> <br /> business</em>
           </h3>
           <Image src={Finance} />
           <SmallImage src={Growing} />
@@ -157,6 +188,14 @@ const Background = styled.div`
     margin-left: 2rem;
     color: #fff;
   }
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -185,19 +224,33 @@ const CardWrapper = styled.div`
     margin-bottom: 1rem;
     margin-left: 1.5rem;
   }
+
+
+  @media screen and (max-width: 480px) {
+    height: auto;
+    align-items: flex-start;
+    width: 100%;
+  }
+
 `;
 
 const FormGroup = styled.div`
   /* border: 1px solid #fff; */
   border-radius: 4px;
   padding: 0 0.5rem;
-  margin: 0.8rem 0;
+  margin: 0.6rem 0;
   width: 400px;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 480px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
 `;
 
 const Input = styled.input`
@@ -212,6 +265,10 @@ const Input = styled.input`
   &::placeholder {
     color: #83838390;
     font-size: 1.05rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 350px;
   }
 `;
 
@@ -231,6 +288,10 @@ const Submit = styled.input`
     background: #a1ef7a;
     /* color: #fff; */
   }
+
+  @media screen and (max-width: 480px) {
+    width: 300px;
+  }
 `;
 
 const Image = styled.img`
@@ -238,6 +299,18 @@ const Image = styled.img`
   height: 430px;
   position: relative;
   left: 10rem;
+
+  @media screen and (max-width: 768px) {
+    left: 1rem;
+    bottom: 2rem;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    left: .5rem;
+    /* bottom: 2rem; */
+    width: 95%;
+  }
 `;
 const SmallImage = styled.img`
   width: 230px;
@@ -245,4 +318,14 @@ const SmallImage = styled.img`
   position: relative;
   left: 5rem;
   top: -320px;
+
+  @media screen and (max-width: 768px) {
+    left: 14rem;
+    top: -500px;
+    width: 100px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;

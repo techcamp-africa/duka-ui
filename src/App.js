@@ -9,13 +9,15 @@ import AddStock from './pages/AddStock';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import AuthRoute from './AuthRoute'
+import Home from './pages/Home';
 
 function App() {
   return (
     <>
     <GlobalStyle />
     <Switch>
-      <AuthRoute path="/" exact component={Dashboard}/>
+      <Route path="/" exact component={Home}/>
+      <AuthRoute path="/dashboard" exact component={Dashboard}/>
       <AuthRoute path="/inventories" exact component={Inventories}/>
       <AuthRoute path="/sales" exact component={Sales}/>
       <AuthRoute path="/stock" exact component={Stock}/>

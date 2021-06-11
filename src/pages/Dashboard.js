@@ -52,7 +52,50 @@ function Dashboard() {
         <Sidebar />
         <Main>
         <CardWrapper>
-              <Card>
+            <Analytic>
+              {/* icon */}
+              <Icon>
+                  <AiFillDatabase style={{marginTop: '8px'}}/>
+              </Icon>
+              {/* digit */}
+              <h2 style={{marginTop: ".8rem"}}>{inventories}</h2>
+              {/* title */}
+              <p style={{marginTop: ".6rem", fontWeight: "700", fontSize: "1.2rem"}}>Inventories</p>
+            </Analytic>
+
+            <Analytic>
+              {/* icon */}
+              <Icon style={{background: "#fec89a"}}>
+                  <FaUsers style={{marginTop: '8px'}}/>
+              </Icon>
+              {/* digit */}
+              <h2 style={{marginTop: ".8rem"}}>{inventories}</h2>
+              {/* title */}
+              <p style={{marginTop: ".6rem", fontWeight: "700", fontSize: "1.2rem"}}>Users</p>
+            </Analytic>
+
+            <Analytic>
+              {/* icon */}
+              <Icon style={{background: "#80ed99"}}> 
+                  <AiFillDatabase style={{marginTop: '8px'}}/>
+              </Icon>
+              {/* digit */}
+              <h2 style={{marginTop: ".8rem"}}>{inventories}</h2>
+              {/* title */}
+              <p style={{marginTop: ".6rem", fontWeight: "700", fontSize: "1.2rem"}}>Orders</p>
+            </Analytic>
+
+            <Analytic>
+              {/* icon */}
+              <Icon style={{background: "#22577a"}}>
+                  <FcSalesPerformance style={{marginTop: '8px'}}/>
+              </Icon>
+              {/* digit */}
+              <h2 style={{marginTop: ".8rem"}}>{sales}</h2>
+              {/* title */}
+              <p style={{marginTop: ".4rem", fontWeight: "700", fontSize: "1.2rem"}}>Sales</p>
+            </Analytic>
+              {/* <Card>
                 <h3>Inventories</h3>
                 <div>
                   <Icon>
@@ -78,7 +121,7 @@ function Dashboard() {
                   </Icon>
                   <p>{sales}</p>
                 </div>
-              </Card>
+              </Card> */}
           </CardWrapper>
           <ChartWrapper>
             <div>
@@ -95,6 +138,15 @@ function Dashboard() {
 
 
 export default Dashboard;
+
+const Analytic = styled.div`
+  /* border: 1px solid #111; */
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 export const Main = styled.div`
   /* flex: 7.0; */
@@ -115,7 +167,7 @@ export const Container = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   padding: 1rem 0;
 
 
@@ -160,9 +212,11 @@ export const Card = styled.div`
   }
 `
 export const Icon = styled.div`
-
+  /* border: 1px solid #111; */
+  border-radius: 999%;
+  padding: .8rem 1.3rem;
   font-size: 2rem;
-
+  background: #8ecae6;
 `
 export const ChartWrapper = styled.div`
   display: flex;

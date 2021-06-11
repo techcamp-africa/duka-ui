@@ -1,6 +1,12 @@
-import {AiFillDatabase, FcSalesPerformance, AiOutlineStock} from 'react-icons/all'
+import {AiFillDatabase, FcSalesPerformance, AiOutlineStock, AiFillHome} from 'react-icons/all'
 
 export const SidebarData = [
+    {
+        title: "Dashboard",
+        path: "/dashboard",
+        icon: <AiFillHome/>,
+        cName: 'nav-text'
+    },
     {
         title: "Inventories",
         path: "/inventories",
@@ -18,5 +24,5 @@ export const SidebarData = [
         path: "/stock",
         icon: <AiOutlineStock />,
         cName: 'nav-text'
-    }
+    },
 ]
