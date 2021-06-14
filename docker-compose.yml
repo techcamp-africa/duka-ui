@@ -5,7 +5,7 @@ services:
   duka_ui:
     container_name: duka_ui
     restart: unless-stopped
-    build: .
+    image: jwambua/duka-ui
     environment: 
       - NODE_PATH=/app/src
     ports:
