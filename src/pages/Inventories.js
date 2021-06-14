@@ -50,7 +50,8 @@ function Inventories() {
       title: '',
       isbn_no: '',
       buying_price: '',
-      selling_price: ''
+      selling_price: '',
+      uid: "1"
     })
     const [inventories, setInventories] = React.useState([])
 
@@ -103,7 +104,8 @@ function Inventories() {
         title: '',
         isbn_no: '',
         buying_price: '',
-        selling_price: ''
+        selling_price: '',
+        uid: ""
       })
       setOpen(false)
     }
